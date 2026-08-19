@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Martin Behrendt – Immobilien, Architektur und Unternehmertum.">
+  <meta name="theme-color" content="#f5f0e7">
+  <title>Martin Behrendt</title>
+
+  <style>
+    :root{
+      --bg:#f7f4ee;
+      --paper:#fffdf9;
+      --ink:#191714;
+      --muted:#6c665e;
+      --gold:#b78c46;
+      --gold-dark:#967037;
+      --line:#ddd4c5;
+      --soft:#eee7dc;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    button,a{ -webkit-tap-highlight-color:transparent; }
+
+    .wrap{width:min(calc(100% - 44px), var(--max));margin:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:100;
+      border-bottom:1px solid rgba(25,23,20,.08);
+      background:rgba(247,244,238,.90);
+      backdrop-filter:blur(16px);
+    }
+    .nav{
+      min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px;
+    }
+    .identity{display:flex;align-items:center;gap:13px}
+    .monogram{
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--gold-dark);font-size:34px;letter-spacing:-.08em;
+      width:44px;text-align:center;
+    }
+    .name{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:21px;letter-spacing:.015em;
+    }
+    .navlinks{display:flex;align-items:center;gap:30px;font-size:13px}
+    .navlinks a{position:relative;padding:26px 0}
+    .navlinks a::after{
+      content:"";position:absolute;left:0;right:100%;bottom:18px;height:1px;
+      background:var(--gold);transition:.2s ease;
+    }
+    .navlinks a:hover::after{right:0}
+
+    .hero{
+      min-height:720px;
+      display:grid;grid-template-columns:1fr 1fr;
+      overflow:hidden;background:var(--paper);
+      border-bottom:1px solid var(--line);
+    }
+    .hero-copy{
+      padding:92px max(22px, calc((100vw - var(--max))/2)) 78px;
+      padding-right:54px;
+      display:flex;flex-direction:column;justify-content:center;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(183,140,70,.08), transparent 36%),
+        var(--paper);
+    }
+    .kicker{
+      margin:0 0 14px;color:var(--gold-dark);font-size:12px;font-weight:650;
+      text-transform:uppercase;letter-spacing:.18em;
+    }
+    h1,h2,h3{
+      margin:0;font-family:Georgia,"Times New Roman",serif;font-weight:400;
+    }
+    h1{
+      font-size:clamp(60px,6.2vw,98px);
+      line-height:.92;letter-spacing:-.055em;
+      max-width:620px;
+    }
+    .hero-sub{
+      margin:25px 0 18px;
+      color:var(--gold-dark);font-size:18px;letter-spacing:.02em;
+    }
+    .degree{
+      width:max-content;
+      margin:0 0 25px;padding:8px 12px;border:1px solid var(--line);
+      border-radius:999px;background:#faf7f1;font-size:13px;
+    }
+    .lead{font-size:17px;color:#4d4841;max-width:575px;margin:0 0 32px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      min-width:145px;padding:14px 20px;border:1px solid var(--gold);
+      display:inline-flex;align-items:center;justify-content:center;
+      font-size:13px;transition:.2s ease;
+    }
+    .btn.primary{background:var(--gold);color:white}
+    .btn:hover{transform:translateY(-2px)}
+
+    .hero-photo{position:relative;min-height:720px;background:#dbe5ef}
+    .hero-photo img{
+      width:100%;height:100%;object-fit:cover;
+      object-position:center center;
+    }
+
+    section{padding:100px 0}
+    .section-title{
+      display:grid;grid-template-columns:.78fr 1.22fr;gap:60px;margin-bottom:55px;
+      align-items:start;
+    }
+    .section-label{
+      color:var(--gold-dark);font-size:11px;text-transform:uppercase;
+      letter-spacing:.2em;font-weight:700;padding-top:9px;
+    }
+    h2{
+      font-size:clamp(42px,4.5vw,66px);line-height:1.02;letter-spacing:-.035em;
+    }
+    .intro{
+      color:var(--muted);font-size:17px;max-width:720px;margin:24px 0 0;
+    }
+
+    .about{background:var(--bg)}
+    .about-grid{
+      display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start;
+    }
+    .about-copy{
+      border-top:1px solid var(--line);padding-top:28px;
+      font-size:17px;color:#403c36;
+    }
+    .about-copy p:first-child{margin-top:0}
+    .about-copy strong{font-weight:600}
+    .about-statements{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);
+    }
+    .statement{background:var(--paper);padding:28px;min-height:170px}
+    .statement small{
+      color:var(--gold-dark);font-size:11px;text-transform:uppercase;letter-spacing:.15em;
+    }
+    .statement b{
+      display:block;font-family:Georgia,"Times New Roman",serif;
+      font-size:25px;font-weight:400;line-height:1.2;margin-top:13px;
+    }
+
+    .projects{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .card{
+      border:1px solid var(--line);background:#fffdfa;
+      padding:28px 24px 26px;min-height:440px;
+      display:flex;flex-direction:column;
+    }
+    .logo-box{
+      height:124px;display:flex;align-items:center;justify-content:center;margin-bottom:21px;
+    }
+    .logo-box img{max-height:105px;max-width:92%;object-fit:contain}
+    .logo-box.amonat{
+      font-size:24px;letter-spacing:.24em;font-weight:700;text-align:center;line-height:1.4;
+    }
+    .logo-box.amonat span{
+      display:block;font-size:10px;letter-spacing:.38em;font-weight:500;
+    }
+    .card h3{font-size:25px;line-height:1.15;margin-bottom:9px}
+    .meta{
+      color:var(--gold-dark);font-size:12px;text-transform:uppercase;letter-spacing:.12em;
+      margin-bottom:18px;
+    }
+    .card p{margin:0;color:#565048;font-size:14px}
+    .card .line{width:34px;height:1px;background:var(--gold);margin:0 0 17px}
+
+    .gallery{padding:84px 0}
+    .gallery-head{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:28px}
+    .gallery-head h2{font-size:46px}
+    .gallery-head p{max-width:520px;color:var(--muted);margin:0}
+    .gallery-grid{
+      display:grid;grid-template-columns:1.35fr .9fr .9fr;grid-template-rows:280px 280px;gap:14px;
+    }
+    .gallery-grid figure{margin:0;overflow:hidden;background:#e4e8ea}
+    .gallery-grid figure:first-child{grid-row:1 / 3}
+    .gallery-grid img{width:100%;height:100%;object-fit:cover}
+    .gallery-grid .portrait-1 img{object-position:center 32%}
+    .gallery-grid .portrait-2 img{object-position:center 35%}
+    .gallery-grid .portrait-3 img{object-position:center 32%}
+    .gallery-grid .portrait-4 img{object-position:center center}
+
+    .contact{
+      padding:85px 0;background:#ece3d5;
+      border-top:1px solid #d7cab7;
+    }
+    .contact-box{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center;
+    }
+    .contact h2{font-size:50px}
+    .contact p{color:#5c554c;max-width:620px}
+    .contact-actions{
+      border-left:1px solid #d0bea4;padding-left:50px;
+      display:flex;flex-direction:column;gap:13px;
+    }
+    .contact-actions .btn{width:100%}
+
+    footer{background:#171613;color:#eae4da;padding:34px 0 22px}
+    .footer-top{
+      display:flex;justify-content:space-between;gap:30px;align-items:center;
+      padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.12);
+    }
+    .footer-name{
+      font-family:Georgia,"Times New Roman",serif;font-size:22px;
+    }
+    .footer-sub{font-size:12px;color:#aaa299;margin-top:4px}
+    .footer-links{display:flex;gap:24px;font-size:12px}
+    .footer-bottom{
+      display:flex;justify-content:space-between;gap:24px;
+      padding-top:18px;color:#8f877e;font-size:11px;
+    }
+
+    @media(max-width:950px){
+      .navlinks{display:none}
+      .hero{grid-template-columns:1fr;min-height:auto}
+      .hero-copy{padding:75px 24px 55px}
+      .hero-photo{min-height:560px}
+      .section-title{grid-template-columns:1fr;gap:16px}
+      .about-grid{grid-template-columns:1fr}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:360px 240px 240px}
+      .gallery-grid figure:first-child{grid-row:1;grid-column:1 / 3}
+      .contact-box{grid-template-columns:1fr}
+      .contact-actions{border-left:0;border-top:1px solid #d0bea4;padding:28px 0 0}
+    }
+
+    @media(max-width:620px){
+      .wrap{width:min(calc(100% - 30px), var(--max))}
+      .name{font-size:18px}
+      .hero-copy{padding-top:58px}
+      h1{font-size:58px}
+      .hero-photo{min-height:430px}
+      section{padding:74px 0}
+      .cards{grid-template-columns:1fr}
+      .card{min-height:0}
+      .about-statements{grid-template-columns:1fr}
+      .gallery-head{display:block}
+      .gallery-head p{margin-top:14px}
+      .gallery-grid{grid-template-columns:1fr;grid-template-rows:repeat(5,330px)}
+      .gallery-grid figure:first-child{grid-row:auto;grid-column:auto}
+      .footer-top,.footer-bottom{align-items:flex-start;flex-direction:column}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="identity" href="#top" aria-label="Startseite">
+        <span class="monogram">MB</span>
+        <span class="name">Martin Behrendt</span>
+      </a>
+
+      <nav class="navlinks" aria-label="Hauptnavigation">
+        <a href="#ueber-mich">Wer ich bin</a>
+        <a href="#projekte">Was ich mache</a>
+        <a href="#einblicke">Einblicke</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker">Persönliche Website</p>
+        <h1>Martin<br>Behrendt</h1>
+        <div class="hero-sub">Immobilien · Architektur · Unternehmertum</div>
+        <div class="degree">Bachelor of Arts in Architektur</div>
+        <p class="lead">
+          Ich verbinde Immobilien, Architektur und unternehmerische Projekte
+          mit persönlichem Anspruch, regionaler Verbundenheit und einem
+          hochwertigen Blick fürs Wesentliche.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#kontakt">Kontakt</a>
+          <a class="btn" href="#projekte">Projekte ansehen</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <!-- Originalfoto, unverändert. Nur der sichtbare Ausschnitt wird per CSS gesteuert. -->
+        <img src="assets/martin-hero.jpg" alt="Martin Behrendt">
+      </div>
+    </section>
+
+    <section class="about" id="ueber-mich">
+      <div class="wrap">
+        <div class="section-title">
+          <div class="section-label">Wer ich bin</div>
+          <div>
+            <h2>Persönlich. Vielseitig.<br>Mit Blick fürs Ganze.</h2>
+            <p class="intro">
+              Diese Seite stellt mich als Person in den Mittelpunkt. Meine Arbeit
+              bewegt sich zwischen Immobilien, Architektur und eigenen
+              unternehmerischen Projekten.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              Ich bin <strong>Martin Behrendt</strong>, Bachelor of Arts in Architektur.
+              Mich interessieren nicht nur einzelne Gebäude oder Produkte, sondern
+              die Ideen, Menschen und Möglichkeiten dahinter.
+            </p>
+            <p>
+              Beruflich bin ich sowohl im Immobilienbereich als auch in der Architektur
+              tätig. Gleichzeitig entwickle ich eigene Projekte und Marken. Genau diese
+              Mischung aus Praxis, Gestaltung und Unternehmertum prägt meinen Weg.
+            </p>
+          </div>
+
+          <div class="about-statements">
+            <div class="statement">
+              <small>Immobilien</small>
+              <b>Markt, Menschen und Vermittlung.</b>
+            </div>
+            <div class="statement">
+              <small>Architektur</small>
+              <b>Planung, Räume und Gestaltung.</b>
+            </div>
+            <div class="statement">
+              <small>Unternehmertum</small>
+              <b>Eigene Ideen weiterentwickeln.</b>
+            </div>
+            <div class="statement">
+              <small>Anspruch</small>
+              <b>Persönlich, klar und hochwertig.</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projekte">
+      <div class="wrap">
+        <div class="section-title">
+          <div class="section-label">Was ich mache</div>
+          <div>
+            <h2>Vier Bereiche.<br>Ein persönlicher Weg.</h2>
+            <p class="intro">
+              Unternehmen, Arbeitgeber und eigene Projekte, die unterschiedliche
+              Seiten meiner Arbeit und Interessen verbinden.
+            </p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="logo-box">
+              <!-- Original-Logo -->
+              <img src="assets/behrendt-desai.png" alt="Behrendt & Desai">
+            </div>
+            <h3>Behrendt &amp; Desai<br>Investment GmbH</h3>
+            <div class="meta">seit 2017</div>
+            <div class="line"></div>
+            <p>
+              Tätigkeit im Bereich Immobilien, Investment und Vermittlung.
+              Der gemeinsame Weg begann 2017 und verbindet Marktkenntnis,
+              Beratung und persönliche Betreuung.
+            </p>
+          </article>
+
+          <article class="card">
+            <!-- Aktuell liegt kein separates Amonat-Logo als Datei vor,
+                 daher bewusst eine reine Wortmarke statt eines KI-Logos. -->
+            <div class="logo-box amonat">
+              AMONAT
+              <span>ARCHITEKTUR</span>
+            </div>
+            <h3>Amonat Architektur</h3>
+            <div class="meta">Architektur</div>
+            <div class="line"></div>
+            <p>
+              Tätigkeit in Planung, Architektur und Projektarbeit.
+              Gestaltung, Funktion und eine präzise Umsetzung stehen dabei
+              im Mittelpunkt.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="logo-box">
+              <!-- Original-Logo -->
+              <img src="assets/olivenherz.png" alt="Olivenherz">
+            </div>
+            <h3>Olivenherz</h3>
+            <div class="meta">seit rund 3 Jahren</div>
+            <div class="line"></div>
+            <p>
+              Mein eigenes Projekt rund um Genuss, Qualität und mediterranes
+              Lebensgefühl – mit ausgewählten Produkten und einer Marke,
+              die aus persönlicher Leidenschaft entstanden ist.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="logo-box">
+              <!-- Original-Logo -->
+              <img src="assets/one-life.png" alt="One Life">
+            </div>
+            <h3>One Life</h3>
+            <div class="meta">in Entwicklung</div>
+            <div class="line"></div>
+            <p>
+              Ein junges Projekt in den Kinderschuhen. Im Mittelpunkt steht
+              ein Lifestyle- und Freizeitprodukt mit dem Gedanken,
+              das Leben bewusster zu genießen und besondere Momente zu schaffen.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="einblicke">
+      <div class="wrap">
+        <div class="gallery-head">
+          <h2>Einblicke</h2>
+          <p>
+            Persönliche Aufnahmen aus meinem Fotoshooting – auf der Website
+            ausschließlich als Originalbilder verwendet.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="portrait-1">
+            <img src="assets/martin-portrait-01.jpg" alt="Martin Behrendt Portrait">
+          </figure>
+          <figure class="portrait-2">
+            <img src="assets/martin-portrait-02.jpg" alt="Martin Behrendt">
+          </figure>
+          <figure class="portrait-3">
+            <img src="assets/martin-portrait-03.jpg" alt="Martin Behrendt">
+          </figure>
+          <figure class="portrait-4">
+            <img src="assets/martin-portrait-04.jpg" alt="Martin Behrendt">
+          </figure>
+          <figure>
+            <img src="assets/martin-hero.jpg" alt="Martin Behrendt">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="kontakt">
+      <div class="wrap contact-box">
+        <div>
+          <p class="kicker">Kontakt</p>
+          <h2>Lassen Sie uns ins Gespräch kommen.</h2>
+          <p>
+            Ob Immobilie, Architektur, Zusammenarbeit oder eine Projektidee –
+            ich freue mich über einen persönlichen Austausch.
+          </p>
+        </div>
+
+        <div class="contact-actions">
+          <!-- E-Mail-Adresse später hier einsetzen -->
+          <a class="btn primary" href="mailto:DEINE-EMAIL@BEISPIEL.DE">E-Mail schreiben</a>
+          <!-- Telefonnummer später hier einsetzen -->
+          <a class="btn" href="tel:+49">Telefon</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <div>
+          <div class="footer-name">Martin Behrendt</div>
+          <div class="footer-sub">martinbehrend.com · Persönliche Website</div>
+        </div>
+        <div class="footer-links">
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Martin Behrendt</span>
+        <span>Immobilien · Architektur · Unternehmertum</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
